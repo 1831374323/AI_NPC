@@ -16,7 +16,7 @@ void UNpcHttp::CreateNpcPost(
     const FString& ContentType
     )
 {
-    const FString Url = " https://api.convai.com/character/create ";
+    const FString Url = "https://api.convai.com/character/create";
     //// ¥¥Ω®«Î«Û
     TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Request =
         FHttpModule::Get().CreateRequest();
