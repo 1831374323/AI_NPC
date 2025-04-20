@@ -28,7 +28,7 @@ public:
         const FString& voiceType,
         const FString& backstory,
         const FString& actions,
-        const FString& ContentType 
+        const FString& ContentType = TEXT("application/json")
     );
 
 private:

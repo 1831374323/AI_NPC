@@ -16,36 +16,36 @@ void UNpcHttp::CreateNpcPost(
     const FString& ContentType
     )
 {
-    //const FString Url = " https://api.convai.com/character/create ";
+    const FString Url = " https://api.convai.com/character/create ";
     //// 创建请求
-    //TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Request =
-    //    FHttpModule::Get().CreateRequest();
+    TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Request =
+        FHttpModule::Get().CreateRequest();
 
     //// 绑定回调
-    //Request->OnProcessRequestComplete().BindStatic(
-    //    &UNpcHttp::OnResponseReceived);
+    Request->OnProcessRequestComplete().BindStatic(
+        &UNpcHttp::OnResponseReceived);
 
     //// 组装请求
-    //Request->SetURL(Url);
-    //Request->SetVerb(TEXT("POST"));
-    //Request->SetHeader(TEXT("Content-Type"), ContentType);
-    //Request->SetHeader(TEXT("User-Agent"), TEXT("X-UnrealEngine-HttpPostHelper"));
-    //Request->SetHeader(TEXT("CONVAI-API-KEY"), ApiKey);
+    Request->SetURL(Url);
+    Request->SetVerb(TEXT("POST"));
+    Request->SetHeader(TEXT("Content-Type"), ContentType);
+    Request->SetHeader(TEXT("User-Agent"), TEXT("X-UnrealEngine-HttpPostHelper"));
+    Request->SetHeader(TEXT("CONVAI-API-KEY"), ApiKey);
 
-    //TSharedPtr<FJsonObject> Json = MakeShared<FJsonObject>();
-    //Json->SetStringField(TEXT("name"), charName);
-    //Json->SetStringField(TEXT("voiceType"), voiceType);
-    //Json->SetStringField(TEXT("backstory"), backstory);
-    //Json->SetStringField(TEXT("actions"), actions);
+    TSharedPtr<FJsonObject> Json = MakeShared<FJsonObject>();
+    Json->SetStringField(TEXT("name"), charName);
+    Json->SetStringField(TEXT("voiceType"), voiceType);
+    Json->SetStringField(TEXT("backstory"), backstory);
+    Json->SetStringField(TEXT("actions"), actions);
 
-    //FString BodyString;
-    //TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&BodyString);
-    //FJsonSerializer::Serialize(Json.ToSharedRef(), Writer);
+    FString BodyString;
+    TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&BodyString);
+    FJsonSerializer::Serialize(Json.ToSharedRef(), Writer);
 
-    //Request->SetContentAsString(BodyString);
+    Request->SetContentAsString(BodyString);
 
-    //// 发送
-    //Request->ProcessRequest();
+    // 发送
+    Request->ProcessRequest();
 }
 
 void UNpcHttp::OnResponseReceived(FHttpRequestPtr Request,
