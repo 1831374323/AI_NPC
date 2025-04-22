@@ -7,7 +7,11 @@
 		{
 			"Name": "AI_NPC",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine",
+				"CoreUObject"
+			]
 		}
 	],
 	"Plugins": [
@@ -37,6 +41,10 @@
 				"Linux",
 				"Android"
 			]
+		},
+		{
+			"Name": "WebBrowserWidget",
+			"Enabled": true
 		}
 	]
 }
